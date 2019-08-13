@@ -1,0 +1,26 @@
+function onChange(control, oldValue, newValue, isLoading) {
+   if (isLoading || newValue == '') {
+      return;
+   }
+
+	//!! PRICES WILL BE PULLED FROM VARIABLE TO MATCHING VALUES
+	
+	
+	//get value of the dependent
+	var ipadColor= g_form.getValue('ipad_colour');
+	g_form.clearOptions('ipad_memory');
+	
+	//run a query against the table that has options
+	// values in cat item variable must match "var 2" for prices to work
+	
+	var gr = new GlideRecord('u_device_price_list');
+	gr.addQuery('u_val_one',ipadColor); //pass in the new dependent value 
+	gr.query();
+	
+	while(gr.next()){
+		//populate the drop down
+		g_form.addOption('ipad_memory', gr.getValue('u_val_two'));  
+	}
+	
+
+}
