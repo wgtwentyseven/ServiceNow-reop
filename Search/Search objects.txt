@@ -1,0 +1,11 @@
+var results = [];
+
+var toSearch = "lo";
+
+for(var i=0; i<objects.length; i++) {
+  for(key in objects[i]) {
+    if(objects[i][key].indexOf(toSearch)!=-1) {
+      results.push(objects[i]);
+    }
+  }
+}

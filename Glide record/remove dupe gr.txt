@@ -1,0 +1,11 @@
+var dup = new GlideAggregate('TABLE');
+dup.groupBy('INDEX');
+dup.query();
+while(dup.next()) {
+	var dup1 = new GlideRecord('dscy_router_interface');
+	dup1.addQuery('mac_address', dup.mac_address);
+	dup1.query();
+	dup1.next();
+	while(dup1.next())
+		dup1.deleteRecord();
+}
